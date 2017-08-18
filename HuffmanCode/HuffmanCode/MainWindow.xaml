@@ -1,8 +1,26 @@
 ﻿<Window x:Class="HuffmanCode.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="HuffMan Code" Height="700" Width="800" BorderBrush="Beige" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\c#.png">
+    
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15">
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="btnOpenFile">
+            <StackPanel>
+                <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\load.png" Height="45" Width="85" RenderTransformOrigin="0.735,0.5"/>
+                <TextBlock Text="Load File" FontSize="12" Height="22" Width="47" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent">
+            <StackPanel>
+                <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\compress.jpg" Height="45" Width="78"/>
+                <TextBlock Text="Compress Data" FontSize="12" Height="22" Width="85" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent">
+            <StackPanel>
+                <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\decompress.png" Height="45" Width="78"/>
+                <TextBlock Text="Compress Data" FontSize="12" Height="22" Width="85" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </StackPanel>
 </Window>
