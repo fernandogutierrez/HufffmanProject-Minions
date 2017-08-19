@@ -28,8 +28,11 @@ namespace HuffmanCode
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
-                Console.WriteLine("hello");
+            {
+               String filename = openFileDialog.FileName;
+            }
         }
 
     }
