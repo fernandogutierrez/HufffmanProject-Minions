@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace HuffmanCode
 {
@@ -24,5 +25,12 @@ namespace HuffmanCode
         {
             InitializeComponent();
         }
+        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                Console.WriteLine("hello");
+        }
+
     }
 }
