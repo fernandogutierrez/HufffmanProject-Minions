@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace HuffmanCode
 {
-    public class NodeList
+    public static class NodeList
     {
-        private List<Node> nodeList;
-        public NodeList()
+        public static List<Node> GetCharFrequency(string text)
         {
-            nodeList = new List<Node>();
-        }
-
-        public List<Node> GetCharFrequency(string text)
-        {
-            this.nodeList.Add(new Node(Convert.ToString(text[0]), 1));
+            List<Node> nodeList = new List<Node>();
+            nodeList.Add(new Node(text[0].ToString(), 1));
             text = text.Remove(0, 1);
 
             foreach (var currentCharacter in text)
@@ -29,14 +24,6 @@ namespace HuffmanCode
                 else
                 {
                     string data = currentCharacter.ToString();
-                    if (data.Equals("\n")) 
-                    {
-                        data = "\x0A";
-                    } 
-                    else if(data.Equals("\r"))
-                    {
-                        data = "\x0D";
-                    }
                     nodeList.Add(new Node(data, 1));
                 }
             }
@@ -44,7 +31,7 @@ namespace HuffmanCode
             return nodeList;
         }
 
-        private int GetCharIndex(List<Node> listOfNodes, char data)
+        private static int GetCharIndex(List<Node> listOfNodes, char data)
         {
             string currentCharAsString = Convert.ToString(data);
             for (int i = 0; i < listOfNodes.Count; i++)

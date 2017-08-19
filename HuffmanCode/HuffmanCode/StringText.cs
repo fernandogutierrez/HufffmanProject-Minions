@@ -8,8 +8,8 @@ namespace HuffmanCode
 {
     public class StringText
     {
-        public StringBuilder Text { get; private set; }
-        public int AmountLines { get; private set; }
+        public StringBuilder Text { get; set; }
+        public int AmountLines { get; set; }
 
         public StringText()
         {
@@ -24,7 +24,8 @@ namespace HuffmanCode
 
         public void ComposeText(string line)
         {
-            Text.Append(line);//.Append(Environment.NewLine);
+            Text.Append(line);
+            Text.Append(System.Environment.NewLine);
             AmountLines++;
         }
 
