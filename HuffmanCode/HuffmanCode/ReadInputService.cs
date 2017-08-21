@@ -12,7 +12,7 @@ namespace HuffmanCode
         public static string LoadTxt(string path)
         {
             StringText fullText = new StringText();
-
+            
             using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (BufferedStream bs = new BufferedStream(fs))
             using (StreamReader reader = new StreamReader(fs))

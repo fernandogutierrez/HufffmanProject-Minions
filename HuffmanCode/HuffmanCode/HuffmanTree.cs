@@ -66,5 +66,10 @@ namespace HuffmanCode
             }
             return text.ToString();
         }
+
+        public string DecodeData() 
+        {
+            return string.Empty;
+        }
     }
 }
