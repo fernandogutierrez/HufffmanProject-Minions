@@ -21,39 +21,42 @@ namespace HuffmanCode
     /// </summary>
     public partial class MainWindow : Window
     {
+        StringText textLog;
         public MainWindow()
         {
             InitializeComponent();
+            textLog = new StringText();
         }
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             String filePath = String.Empty;
-
             if (openFileDialog.ShowDialog() == true)
             {
                filePath = openFileDialog.FileName;
             }
-
             string text = ReadInputService.LoadTxt(filePath);
+            txtbl_log.Text = textLog.ComposeNewStrRow("Reading file path: ", filePath);
 
-            //// 2nd part
-
-            //First Step
-            //NodeList nodeList = new NodeList();
             List<Node> nodes = NodeList.GetCharFrequency(text);
-            Stack<Node> minHeap = StackManager.GetSortedStack(nodes);
+            txtbl_log.Text += textLog.ComposeNewStrRow("Nodes with frequency: ", nodes.ToString());
 
-            // 2 and 3
+            Stack<Node> minHeap = StackManager.GetSortedStack(nodes);
+            txtbl_log.Text += textLog.ComposeNewStrRow("Min Heap: ", minHeap.ToString());
+
             HuffmanTree huffmanTree = new HuffmanTree();
             Node tree = huffmanTree.BuildTree(minHeap);
-            // Generate code
+            txtbl_log.Text += textLog.ComposeNewStrRow("Tree of nodes: ", minHeap.ToString());
             string finalCode = huffmanTree.GenerateCode(tree, text);
-            DecodeData(tree, tree, 0, finalCode);
+            txtbl_log.Text += textLog.ComposeNewStrRow("Code generated: ", finalCode);
+            //WriteOutputService.CreateTxt(huffmanTree.DecodeData());
+
+            //DecodeData(tree, tree, 0, finalCode);
 
             Console.ReadLine();
         }
+        
 
         public static void DecodeData(Node parentNode, Node currentNode, int pointer, string input)
         {

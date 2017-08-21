@@ -33,5 +33,13 @@ namespace HuffmanCode
         {
             return Text.ToString();
         }
+
+        public string ComposeNewStrRow(params string[] text)
+        {
+            Text.Append(Environment.NewLine);
+            Text.Append(text[0]);
+            Text.Append(text[1]);
+            return Text.ToString();
+        }
     }
 }
