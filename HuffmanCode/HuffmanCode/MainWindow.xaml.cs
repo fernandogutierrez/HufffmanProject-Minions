@@ -22,22 +22,27 @@ namespace HuffmanCode
     public partial class MainWindow : Window
     {
         StringText textLog;
+        String fileToCompress;
         public MainWindow()
         {
             InitializeComponent();
             textLog = new StringText();
+            fileToCompress = String.Empty;
         }
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            String filePath = String.Empty;
             if (openFileDialog.ShowDialog() == true)
             {
-               filePath = openFileDialog.FileName;
+                fileToCompress = openFileDialog.FileName;
             }
-            string text = ReadInputService.LoadTxt(filePath);
-            txtbl_log.Text = textLog.ComposeNewStrRow("Reading file path: ", filePath);
+        }
+
+        private void btnCompressData_Click(object sender, RoutedEventArgs e)
+        {
+            string text = ReadInputService.LoadTxt(fileToCompress);
+            txtbl_log.Text = textLog.ComposeNewStrRow("Reading file path: ", fileToCompress);
 
             List<Node> nodes = NodeList.GetCharFrequency(text);
             txtbl_log.Text += textLog.ComposeNewStrRow("Nodes with frequency: ", nodes.ToString());
@@ -50,13 +55,12 @@ namespace HuffmanCode
             txtbl_log.Text += textLog.ComposeNewStrRow("Tree of nodes: ", minHeap.ToString());
             string finalCode = huffmanTree.GenerateCode(tree, text);
             txtbl_log.Text += textLog.ComposeNewStrRow("Code generated: ", finalCode);
-            //WriteOutputService.CreateTxt(huffmanTree.DecodeData());
 
-            //DecodeData(tree, tree, 0, finalCode);
-
-            Console.ReadLine();
         }
-        
+        private void btnDeCompressData_Click(object sender, RoutedEventArgs e)
+        {
+            //DecodeData(tree, tree, 0, finalCode);
+        }
 
         public static void DecodeData(Node parentNode, Node currentNode, int pointer, string input)
         {
