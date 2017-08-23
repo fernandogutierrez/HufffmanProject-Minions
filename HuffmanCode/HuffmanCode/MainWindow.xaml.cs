@@ -23,11 +23,17 @@ namespace HuffmanCode
     {
         StringText textLog;
         String fileToCompress;
+        Node treeOfCodes;
+        HuffmanTree huffmanTree;
+        string finalCode;
+
         public MainWindow()
         {
             InitializeComponent();
             textLog = new StringText();
             fileToCompress = String.Empty;
+            huffmanTree = new HuffmanTree();
+            finalCode = String.Empty;
         }
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
@@ -50,48 +56,15 @@ namespace HuffmanCode
             Stack<Node> minHeap = StackManager.GetSortedStack(nodes);
             txtbl_log.Text += textLog.ComposeNewStrRow("Min Heap: ", minHeap.ToString());
 
-            HuffmanTree huffmanTree = new HuffmanTree();
-            Node tree = huffmanTree.BuildTree(minHeap);
+            treeOfCodes = huffmanTree.BuildTree(minHeap);
             txtbl_log.Text += textLog.ComposeNewStrRow("Tree of nodes: ", minHeap.ToString());
-            string finalCode = huffmanTree.GenerateCode(tree, text);
+            finalCode = huffmanTree.GenerateCode(treeOfCodes, text);
             txtbl_log.Text += textLog.ComposeNewStrRow("Code generated: ", finalCode);
 
         }
         private void btnDeCompressData_Click(object sender, RoutedEventArgs e)
         {
-            //DecodeData(tree, tree, 0, finalCode);
-        }
-
-        public static void DecodeData(Node parentNode, Node currentNode, int pointer, string input)
-        {
-            if (input.Length == pointer)
-            {
-                if (currentNode.IsLeaf())
-                {
-                    Console.WriteLine(currentNode.Data);
-                }
-
-                return;
-            }
-            else
-            {
-                if (currentNode.IsLeaf())
-                {
-                    Console.WriteLine(currentNode.Data);
-                    DecodeData(parentNode, parentNode, pointer, input);
-                }
-                else
-                {
-                    if (input.Substring(pointer, 1) == "0")
-                    {
-                        DecodeData(parentNode, currentNode.LeftChild, ++pointer, input);
-                    }
-                    else
-                    {
-                        DecodeData(parentNode, currentNode.RightChild, ++pointer, input);
-                    }
-                }
-            }
+            huffmanTree.DecodeData(treeOfCodes, finalCode);
         }
 
     }

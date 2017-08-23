@@ -71,5 +71,42 @@ namespace HuffmanCode
         {
             return string.Empty;
         }
+
+        public void DecodeData(Node treeOfCodes, string dataDecoded)
+        {
+            DecodeData(treeOfCodes, treeOfCodes, 0, dataDecoded);
+        }
+
+        public void DecodeData(Node parentNode, Node currentNode, int pointer, string input)
+        {
+            if (input.Length == pointer)
+            {
+                if (currentNode.IsLeaf())
+                {
+                    Console.WriteLine(currentNode.Data);
+                }
+
+                return;
+            }
+            else
+            {
+                if (currentNode.IsLeaf())
+                {
+                    Console.WriteLine(currentNode.Data);
+                    DecodeData(parentNode, parentNode, pointer, input);
+                }
+                else
+                {
+                    if (input.Substring(pointer, 1) == "0")
+                    {
+                        DecodeData(parentNode, currentNode.LeftChild, ++pointer, input);
+                    }
+                    else
+                    {
+                        DecodeData(parentNode, currentNode.RightChild, ++pointer, input);
+                    }
+                }
+            }
+        }
     }
 }
