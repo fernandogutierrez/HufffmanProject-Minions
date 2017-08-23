@@ -33,7 +33,7 @@ namespace HuffmanCode
             }
         }
 
-        private void btnCompressData_Click(object sender, RoutedEventArgs e)
+        private void CompressData_Click(object sender, RoutedEventArgs e)
         {
             compress_btn.IsEnabled = false;
             openFile_btn.IsEnabled = false;
@@ -54,7 +54,7 @@ namespace HuffmanCode
             txtbl_log.Text += textLog.ComposeNewStrRow("Code generated: ", finalCode);
                 
         }
-        private void btnDeCompressData_Click(object sender, RoutedEventArgs e)
+        private void DeCompressData_Click(object sender, RoutedEventArgs e)
         {
             compress_btn.IsEnabled = false;
             decompres_btn.IsEnabled = false;

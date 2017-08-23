@@ -17,13 +17,13 @@
                     <TextBlock Text="Load File" FontSize="12" Height="22" Width="47" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="compress_btn" Click="btnCompressData_Click" IsEnabled="False">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="compress_btn" Click="CompressData_Click" IsEnabled="False">
                 <StackPanel>
                     <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\compress.jpg" Height="45" Width="78"/>
                     <TextBlock Text="Compress Data" FontSize="12" Height="22" Width="85" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="decompres_btn" Click="btnDeCompressData_Click" IsEnabled="False">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="decompres_btn" Click="DeCompressData_Click" IsEnabled="False">
                 <StackPanel>
                     <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\decompress.png" Height="45" Width="78"/>
                     <TextBlock Text="Decompress Data" FontSize="12" Height="22" Width="85" HorizontalAlignment="Center"/>
