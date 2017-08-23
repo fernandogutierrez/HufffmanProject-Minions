@@ -11,19 +11,19 @@
         </StackPanel>
         
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15">
-            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="btnOpenFile" Click="btnOpenFile_Click">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="openFile_btn" Click="OpenFile_Click">
                 <StackPanel>
                     <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\load.png" Height="45" Width="85" RenderTransformOrigin="0.735,0.5"/>
                     <TextBlock Text="Load File" FontSize="12" Height="22" Width="47" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Click="btnCompressData_Click">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="compress_btn" Click="btnCompressData_Click" IsEnabled="False">
                 <StackPanel>
                     <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\compress.jpg" Height="45" Width="78"/>
                     <TextBlock Text="Compress Data" FontSize="12" Height="22" Width="85" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Click="btnDeCompressData_Click">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Name="decompres_btn" Click="btnDeCompressData_Click" IsEnabled="False">
                 <StackPanel>
                     <Image Source="C:\Users\Fernando\Documents\Visual Studio 2013\Projects\WpfApplication1\images\decompress.png" Height="45" Width="78"/>
                     <TextBlock Text="Decompress Data" FontSize="12" Height="22" Width="85" HorizontalAlignment="Center"/>

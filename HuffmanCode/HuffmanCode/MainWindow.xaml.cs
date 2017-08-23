@@ -1,24 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 
 namespace HuffmanCode
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         StringText textLog;
@@ -35,18 +22,23 @@ namespace HuffmanCode
             huffmanTree = new HuffmanTree();
             finalCode = String.Empty;
         }
-        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        private void OpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
                 fileToCompress = openFileDialog.FileName;
+                compress_btn.IsEnabled = true;
             }
         }
 
         private void btnCompressData_Click(object sender, RoutedEventArgs e)
         {
+            compress_btn.IsEnabled = false;
+            openFile_btn.IsEnabled = false;
+            decompres_btn.IsEnabled = true;
+
             string text = ReadInputService.LoadTxt(fileToCompress);
             txtbl_log.Text = textLog.ComposeNewStrRow("Reading file path: ", fileToCompress);
 
@@ -60,10 +52,13 @@ namespace HuffmanCode
             txtbl_log.Text += textLog.ComposeNewStrRow("Tree of nodes: ", minHeap.ToString());
             finalCode = huffmanTree.GenerateCode(treeOfCodes, text);
             txtbl_log.Text += textLog.ComposeNewStrRow("Code generated: ", finalCode);
-
+                
         }
         private void btnDeCompressData_Click(object sender, RoutedEventArgs e)
         {
+            compress_btn.IsEnabled = false;
+            decompres_btn.IsEnabled = false;
+
             huffmanTree.DecodeData(treeOfCodes, finalCode);
         }
 
